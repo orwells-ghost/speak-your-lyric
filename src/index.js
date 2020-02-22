@@ -7,17 +7,17 @@ const genius_access_token = 'Nm6awKCVDYtu3iqesrN70oCIKGFP0x9NxDcdsGZ9O_wCPTPPjw1
 const btn = document.querySelector('.btn')
 const input = document.querySelector('.input')
 
-// SpeechRecognition is a global variable that lives in the browser
+// SpeechRecognition is a global variable that lives in the browser. Also need to provide OR for compatibility 
 window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 
-let recognition = new window.SpeechRecognition();
-
-
+const recognition = new window.SpeechRecognition();
+recognition.continuous = true
+recognition.start();
+recognition.addEventListener('result', onSpeak)
 
 function onSpeak(e) {
 	const msg = e.results[0][0].transcript;
-
-	console.log(msg)
+	initiateSeach(msg)
 }
 
 const searchLyric = async (searchTerm) => {
@@ -42,9 +42,10 @@ const searchLyric = async (searchTerm) => {
 	}
 }
 
-const initiateSeach = async () => {
-	const userInput = input.value
-	const searchResults = await searchLyric(userInput)
+// You're gonna need to rewrite this to allow for both manual search and verbal search
+const initiateSeach = async (phrase) => {
+	// const userInput = input.value
+	const searchResults = await searchLyric(phrase)
 	console.log(searchResults)
 }
 
