@@ -1,13 +1,74 @@
 /* Here are example using scss */
 
 html {
-  box-sizing: border-box;
-  font-size: 62.5%;
+	box-sizing: border-box;
+	font-size: 62.5%;
 }
 
 *,
 *::before,
 *::after {
-  box-sizing: inherit;
+	box-sizing: inherit;
 }
 
+$color-primary-dark: #6E48AA;
+$color-text: #272A39;
+$color-background-light: #D7D8F4;
+
+body {
+	font-family: 'Lato', sans-serif;
+	font-weight: 400;
+	line-height: 1.5;
+	background-image: linear-gradient(to right bottom, #6E48AA, #9D50BB);
+	background-size: cover;
+	background-repeat: no-repeat;
+	min-height: 100vh;
+}
+
+.container {
+	max-width: 120rem;
+	margin: 4vw auto;
+	background-color: #fff;
+	border-radius: 6px;
+	overflow: hidden;
+	box-shadow: 0 2rem 6rem 0.5rem rgba(101, 90, 86, 0.2);
+	display: grid;
+	grid-template-rows: 20rem minmax(85rem, auto);
+	grid-template-columns: 1fr 5fr;
+}
+
+.header {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-color: $color-background-light;
+
+	&__logo {
+		width: 8rem;
+		margin-top: 2.4rem;
+	}
+
+	&__title {
+		font-size: 2.4rem;
+		font-family: 'Lobster', serif;
+		color: $color-text;
+	}
+}
+
+.search {
+	background-color: $color-background-light;
+	position: relative;
+
+	&__input {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		font-size: 1.4rem;
+		border: none;
+		width: 45rem;
+		padding: 1.2rem;
+		border: 1px solid $color-primary-dark;
+		border-radius: 8px;
+	}	
+}
