@@ -9,66 +9,170 @@ html {
 *::before,
 *::after {
 	box-sizing: inherit;
+	margin: 0;
 }
 
+$color-blue-purple: #5E44CC;
+$color-pink: #FDBBBD;
+$color-background: #D7D8F4;
+$color-background-light: #F2F2FC;
 $color-primary-dark: #6E48AA;
 $color-text: #272A39;
-$color-background-light: #D7D8F4;
+
+$font-lato: 'Lato', sans-serif;
+$font-lobster: 'Lobster', serif;
 
 body {
-	font-family: 'Lato', sans-serif;
+	font-family: $font-lato;
 	font-weight: 400;
 	line-height: 1.5;
-	background-image: linear-gradient(to right bottom, #6E48AA, #9D50BB);
+	color: $color-text;
+	background-image: linear-gradient(to right top, $color-blue-purple, $color-pink);
 	background-size: cover;
 	background-repeat: no-repeat;
 	min-height: 100vh;
 }
 
 .container {
-	max-width: 120rem;
+	max-width: 140rem;
 	margin: 4vw auto;
 	background-color: #fff;
 	border-radius: 6px;
 	overflow: hidden;
 	box-shadow: 0 2rem 6rem 0.5rem rgba(101, 90, 86, 0.2);
 	display: grid;
-	grid-template-rows: 20rem minmax(85rem, auto);
-	grid-template-columns: 1fr 5fr;
+	grid-template-rows: 25rem minmax(85rem, auto);
+	grid-template-columns: 1.3fr 5fr;
+	grid-template-areas: "header   search"
+						 "instruct results";
 }
 
 .header {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	grid-area: header;
+	border-right: 1px solid $color-primary-dark;
 	background-color: $color-background-light;
 
 	&__logo {
 		width: 8rem;
-		margin-top: 2.4rem;
+		margin-top: 4.8rem;
 	}
 
 	&__title {
 		font-size: 2.4rem;
-		font-family: 'Lobster', serif;
+		font-family: $font-lobster;
 		color: $color-text;
+		margin-top: 1.2rem;
 	}
 }
 
 .search {
 	background-color: $color-background-light;
-	position: relative;
+	// position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	grid-area: search;
 
 	&__input {
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
+		// position: absolute;
+		// top: 50%;
+		// left: 50%;
+		// transform: translate(-50%, -50%);
 		font-size: 1.4rem;
 		border: none;
-		width: 45rem;
-		padding: 1.2rem;
+		width: 48rem;
+		padding: 1.8rem;
 		border: 1px solid $color-primary-dark;
 		border-radius: 8px;
-	}	
+	}
+
+	&__spinner {
+		width: 8rem;
+		visibility: hidden;
+	}
+}
+
+.instructions {
+	background-color: $color-background-light;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	grid-area: instruct;
+
+	&__title {
+		font-size: 2.4rem;
+		border-bottom: 2px solid;
+		margin-bottom: 2.4rem;
+	}
+
+	&__list {
+		margin-left: 2rem;
+		list-style: none;
+
+		&--item {
+			font-size: 1.8rem;
+			margin-top: 1.2rem;
+
+			&::before {
+				content: "• ";
+				color: $color-pink;
+				margin-right: 1rem;
+			}
+		}	
+	}
+}
+
+.results {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+	grid-gap: 4rem 6rem;
+	padding: 14rem 8rem 8rem 8rem;
+	position: relative;
+
+	&__title {
+		position: absolute;	
+		left: 50%;
+		transform: translateX(-50%);
+		margin-top: 3.6rem;
+		font-size: 2.4rem;
+	}
+
+
+	&__card {
+		padding: 2rem;
+		background-color: $color-background;
+
+
+		&--content {
+			display: flex;
+			flex-direction: column;
+	
+		}
+
+		&--title {
+			font-size: 2.4rem;
+			margin-top: 1.2rem;
+		}
+
+		&--artist {
+			font-size: 2rem;
+			margin-top: .2rem;
+			margin-bottom: 2rem;
+		}
+
+		&--logo {
+			width: 3rem;
+		}
+
+		&--img {
+			width: 100%;	
+		}
+	}
+}
+
+.visible {
+	visibility: visible;	
 }
