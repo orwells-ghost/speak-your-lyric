@@ -22,6 +22,10 @@ $color-text: #272A39;
 $font-lato: 'Lato', sans-serif;
 $font-lobster: 'Lobster', serif;
 
+@media only screen and (max-width: 62.5em) {
+
+}
+
 body {
 	font-family: $font-lato;
 	font-weight: 400;
@@ -45,6 +49,16 @@ body {
 	grid-template-columns: 1.3fr 5fr;
 	grid-template-areas: "header   search"
 						 "instruct results";
+
+	@media only screen and (max-width: 62.5em) {
+		max-width: 80rem;
+		grid-template-columns: 1fr;
+		grid-template-rows: repeat(3, auto) minmax(60rem, auto);
+		grid-template-areas: "header"
+							 "instruct"
+							 "search"
+							 "results"
+	}
 }
 
 .header {
@@ -76,6 +90,10 @@ body {
 	justify-content: center;
 	grid-area: search;
 
+	@media only screen and (max-width: 62.5em) {
+		flex-direction: column;	
+	}
+
 	&__input {
 		// position: absolute;
 		// top: 50%;
@@ -87,11 +105,24 @@ body {
 		padding: 1.8rem;
 		border: 1px solid $color-primary-dark;
 		border-radius: 8px;
+
+		@media only screen and (max-width: 62.5em) {
+			width: 30rem;
+			margin-top: 4.8rem;
+		}
+
+		@media only screen and (max-width: 34.375em) {
+			width: 20rem;	
+		}
 	}
 
 	&__spinner {
 		width: 8rem;
 		visibility: hidden;
+
+		@media only screen and (max-width: 62.5em) {
+			padding: 3.2rem 0;	
+		}
 	}
 }
 
@@ -101,6 +132,11 @@ body {
 	flex-direction: column;
 	align-items: center;
 	grid-area: instruct;
+	padding-right: 1rem;
+
+	@media only screen and (max-width: 62.5em) {
+		padding-top: 4.8rem;	
+	}
 
 	&__title {
 		font-size: 2.4rem;
@@ -109,8 +145,9 @@ body {
 	}
 
 	&__list {
-		margin-left: 2rem;
+
 		list-style: none;
+		padding-inline-start: 0;
 
 		&--item {
 			font-size: 1.8rem;
@@ -126,11 +163,19 @@ body {
 }
 
 .results {
-	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-	grid-gap: 4rem 6rem;
-	padding: 14rem 8rem 8rem 8rem;
 	position: relative;
+
+	&__results {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+		grid-gap: 4rem 6rem;
+		padding: 14rem 8rem 8rem 8rem;
+
+		@media only screen and (max-width: 34.375em) {
+			padding: 8rem 2rem 2rem 2rem;	
+		}
+	}
+
 
 	&__title {
 		position: absolute;	
@@ -144,6 +189,7 @@ body {
 	&__card {
 		padding: 2rem;
 		background-color: $color-background;
+		max-height: 43rem;
 
 
 		&--content {
@@ -153,7 +199,7 @@ body {
 		}
 
 		&--title {
-			font-size: 2.4rem;
+			font-size: 2rem;
 			margin-top: 1.2rem;
 		}
 
@@ -168,7 +214,8 @@ body {
 		}
 
 		&--img {
-			width: 100%;	
+			width: 100%;
+			height: 24rem;
 		}
 	}
 }
