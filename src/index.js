@@ -41,7 +41,6 @@ const onSpeak = e => {
 const initiateSeach = async (phrase) => {
 	// const userInput = input.value
 	const searchResults = await searchLyric(phrase)
-	console.log(searchResults)
 	renderResults(searchResults)
 }
 
@@ -49,7 +48,6 @@ const searchLyric = async (searchTerm) => {
 	try {
 		const res = await fetch(`${genius_base_url}${searchTerm}&access_token=${genius_access_token}`)
 		const data = await res.json()
-		console.log(data)
 		if (data.response.hits.length === 0) {
 			noLyricsFound()
 		}
@@ -83,10 +81,10 @@ const renderSong = song => {
 				<h3 class="results__card--artist" title="${song.artist}">By ${limitSongTitle(song.artist)}</h3>
 				<div class="results__card--icons">
 					<a href="https://www.youtube.com/results?search_query=${song.title} by ${song.artist}" target="_blank">
-						<img src="assets/youtube-logo.svg" alt="" class="results__card--logo">
+						<img src="./assets/youtube-logo.svg" alt="" class="results__card--logo">
 					</a>
 					<a href="https://open.spotify.com/search/${song.title} ${song.artist}" target="_blank">
-						<img src="assets/spotify-logo.svg" alt="" class="results__card--logo">
+						<img src="./assets/spotify-logo.svg" alt="" class="results__card--logo">
 					</a>
 				</div>
 			</div>
@@ -113,3 +111,5 @@ const limitSongTitle = (title, limit = 20) => {
 recognition.addEventListener('result', onSpeak)
 // After user stops speaking, recognition will end. This will restart it on the 'end' event
 recognition.addEventListener('end', recognition.start) 
+
+console.log('App is running...')

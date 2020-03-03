@@ -223,3 +223,9 @@ body {
 .visible {
 	visibility: visible;	
 }
+
+.preload {
+	visibility: hidden;
+	position: absolute;
+	width: .01rem;
+}

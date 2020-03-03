@@ -15,7 +15,8 @@ module.exports = {
     contentBase: path.join(__dirname, "../dist"),
     compress: true,
     port: 3000,
-    overlay: true
+    overlay: true,
+    open: 'chrome'
   },
   devtool: "cheap-module-eval-source-map",
   module: {
